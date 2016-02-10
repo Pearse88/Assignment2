@@ -2,11 +2,16 @@
 //try fix
 PImage bg;
 
+//sets how many aliens there are
 int rows = 4;
 int cols = 10;
 SpaceInvader[][] spaceInv = new SpaceInvader[cols][rows];
+
+//how many sheilds are in place
 Protection[] protect = new Protection[4];
+
 Bullet[] bullet = new Bullet[3];
+//lives
 Ship[] shipLives = new Ship[3];
 MotherShip motherShip;
 Bullet laser;
