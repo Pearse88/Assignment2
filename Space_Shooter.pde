@@ -1,4 +1,5 @@
-//doesn't work?
+//doesn't work as a background image
+//try fix
 PImage bg;
 
 int rows = 4;
@@ -17,6 +18,7 @@ Ship ship;
 void setup()
 {  
   size(501,432);
+  //fix image
   bg = loadImage("stars.jpg");
   
   frameRate(60);
