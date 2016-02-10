@@ -1,7 +1,7 @@
 class Bullet
 {
-  float pX;
-  float pY;
+  float bulletX;
+  float bulletY;
   float invader;
   boolean display;
   float speedY;
@@ -10,8 +10,8 @@ class Bullet
 
   Bullet(float x_, float y_)
   {
-    pX=x_;
-    pY=y_;
+    bulletX=x_;
+    bulletY=y_;
     invader = 3;
     display=false;
     speedY=-2.5;  
@@ -20,8 +20,8 @@ class Bullet
 
   Bullet()
   {
-    pX=width/2;
-    pY=9*height/10;
+    bulletX=width/2;
+    bulletY=9*height/10;
     invader = 2;  
     display=false;  
     speedY=4.1;
@@ -36,17 +36,17 @@ class Bullet
       {
         strokeWeight(invader);
         stroke(255);
-        line(pX,pY,pX,pY-5*invader); 
+        line(bulletX,bulletY,bulletX,bulletY-5*invader); 
       }
       else
       {
         strokeWeight(invader-1);
         stroke(255);
-        line(pX+invader,pY,pX-invader,pY-invader); 
-        line(pX-invader,pY-invader,pX+invader,pY-2*invader); 
-        line(pX+invader,pY-2*invader,pX-invader,pY-3*invader); 
-        line(pX-invader,pY-3*invader,pX+invader,pY-4*invader);
-       line(pX+invader,pY-4*invader,pX-invader,pY-5*invader);  
+        line(bulletX+invader,bulletY,bulletX-invader,bulletY-invader); 
+        line(bulletX-invader,bulletY-invader,bulletX+invader,bulletY-2*invader); 
+        line(bulletX+invader,bulletY-2*invader,bulletX-invader,bulletY-3*invader); 
+        line(bulletX-invader,bulletY-3*invader,bulletX+invader,bulletY-4*invader);
+       line(bulletX+invader,bulletY-4*invader,bulletX-invader,bulletY-5*invader);  
       }
     }
   }
@@ -55,11 +55,11 @@ class Bullet
   {
     if(display==true)
     {
-      pY=pY - speedY; 
-      if( pY < 0 || pY > height+5*invader )
+      bulletY=bulletY - speedY; 
+      if( bulletY < 0 || bulletY > height+5*invader )
       {
-        pX=0;
-        pY=0;
+        bulletX=0;
+        bulletY=0;
         display=false;
       }
     }
@@ -70,15 +70,15 @@ class Bullet
     if(display==false)
     {
       display=true;
-      pX=x_;
+      bulletX=x_;
       if(unedeux==true)
       {
-         pY=9*height/10;
+         bulletY=9*height/10;
          unedeux=!unedeux;
       }
       else
       {
-        pY=9*height/10-2;
+        bulletY=9*height/10-2;
         unedeux=!unedeux;
       }
       
@@ -90,8 +90,8 @@ class Bullet
     if(display==false)
     {
       display=true;
-      pX=x_;
-      pY=y_;
+      bulletX=x_;
+      bulletY=y_;
       
      
     } 

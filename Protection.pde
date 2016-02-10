@@ -1,7 +1,9 @@
 class Protection
 {
   int x,y;
-  int invaderx,invadery;
+  int invaderX,invaderY;
+  
+  // protection sheild shape
   int[][]  protect = {
               {0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0},
               {0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
@@ -25,8 +27,8 @@ class Protection
     x = x_;
     y = y_;
     
-    invaderx=2;
-    invadery=2;
+    invaderX=2;
+    invaderY=2;
   }   
   
   void display()
@@ -41,7 +43,7 @@ class Protection
       {
         if(protect[i][j]==1)
         {
-          rect(j*invaderx+x,i*invadery+y,invaderx,invadery);
+          rect(j*invaderX+x,i*invaderY+y,invaderX,invaderY);
         }
       }
     }
@@ -54,7 +56,7 @@ class Protection
     {
       for(int j=0; j<20;j++)
       {
-        if(pX >= j*invaderx+x-invaderx/2 && pX <= j*invaderx+x+invadery/2 && pY >= i*invadery+y-invadery/2 && pY <= i*invadery+y+invadery/2 && protect[i][j]==1)
+        if(pX >= j*invaderX+x-invaderX/2 && pX <= j*invaderX+x+invaderX/2 && pY >= i*invaderY+y-invaderY/2 && pY <= i*invaderY+y+invaderY/2 && protect[i][j]==1)
         {
           protect[i][j]=0;
           for(int t=i-2;t<=i+2;t++)

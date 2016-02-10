@@ -82,11 +82,11 @@ void draw()
     
     motherShip.display();
     motherShip.move();
-    if(motherShip.contact(laser.pX,laser.pY)==false)
+    if(motherShip.contact(laser.bulletX,laser.bulletY)==false)
     {
       object.score += int(random(40,250));
       laser.display=false;
-      laser.pY=height; 
+      laser.bulletY=height; 
     }
     if(random(100) > 99.7)
     {
@@ -132,22 +132,22 @@ void draw()
       {
         bullet[i].move();
         bullet[i].display();
-        if(ship.contact(bullet[i].pX,bullet[i].pY) == true)
+        if(ship.contact(bullet[i].bulletX,bullet[i].bulletY) == true)
         {
           object.shipcollisionBullet=true;
           bullet[i] = new Bullet(0,0);
         }
         for(int k=0; k < protect.length;k++)
         {
-          if(protect[k].contact(bullet[i].pX,bullet[i].pY)== true)
+          if(protect[k].contact(bullet[i].bulletX,bullet[i].bulletY)== true)
           {
-            protect[k].contact(bullet[i].pX,bullet[i].pY+2);
+            protect[k].contact(bullet[i].bulletX,bullet[i].bulletY+2);
             bullet[i] = new Bullet(0,0);
           }
-          if(protect[k].contact(laser.pX,laser.pY)== true)
+          if(protect[k].contact(laser.bulletX,laser.bulletY)== true)
           {
             laser.display=false;
-            laser.pY=height;
+            laser.bulletY=height;
           }
         }
       }
@@ -170,7 +170,7 @@ void draw()
               {
                 if(protect[k].protect[p][o]==1)
                 {
-                  if(o*protect[k].invaderx+protect[k].x >spaceInv[i][j].shipX-4*spaceInv[i][j].invader && o*protect[k].invaderx+protect[k].x < spaceInv[i][j].shipX+4*spaceInv[i][j].invader && p*protect[k].invadery+protect[k].y < spaceInv[i][j].shipY+4*spaceInv[i][j].invader)
+                  if(o*protect[k].invaderX+protect[k].x >spaceInv[i][j].shipX-4*spaceInv[i][j].invader && o*protect[k].invaderX+protect[k].x < spaceInv[i][j].shipX+4*spaceInv[i][j].invader && p*protect[k].invaderY+protect[k].y < spaceInv[i][j].shipY+4*spaceInv[i][j].invader)
                   {
                     protect[k].protect[p][o]=0;
                   } 
@@ -182,7 +182,7 @@ void draw()
 
 
 
-        if(spaceInv[i][j].contact(laser.pX,laser.pY)==false)
+        if(spaceInv[i][j].contact(laser.bulletX,laser.bulletY)==false)
         {
           switch (spaceInv[i][j].type)
           {
@@ -197,7 +197,7 @@ void draw()
             break;
           }
           laser.display=false;
-          laser.pY=height;
+          laser.bulletY=height;
         }
 
         if(spaceInv[i][j].allive==true)
@@ -235,7 +235,7 @@ void draw()
       {
         for(int j=0;j<rows;j++)
         {
-          init(i,j);
+          begin(i,j);
         }
       }
     }
@@ -311,7 +311,7 @@ void starting()
 }
 
 
-void init(int i,int j)
+void begin(int i,int j)
 {
   spaceInv[i][j].shipX=object.enemyX+35*i;
   spaceInv[i][j].shipY=object.enemyY+30*j;
@@ -359,7 +359,7 @@ void gameOver()
     {
       for(int j=0;j<rows;j++)
       {
-        init(i,j);
+        begin(i,j);
       }
     }
   }
